@@ -15,8 +15,8 @@ class Category(models.Model):
         return self.category_name
 
     class Meta:
-        verbose_name = "Категория"
-        verbose_name_plural = "Категории"
+        verbose_name = "категория"
+        verbose_name_plural = "категории"
 
 
 class Product(models.Model):
@@ -49,7 +49,7 @@ class Product(models.Model):
     )
     created_at = models.DateTimeField(auto_now_add=True, verbose_name="Дата создания")
     updated_at = models.DateTimeField(auto_now=True, verbose_name="Дата изменения")
-    manufactured_at = models.DateTimeField(null=True, blank=True, verbose_name="Дата производства продукта")
+
 
     def __str__(self):
         return self.product_name
