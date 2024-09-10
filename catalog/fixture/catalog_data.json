@@ -1,0 +1,104 @@
+[
+  {
+    "model": "catalog.category",
+    "pk": 1,
+    "fields": {
+      "category_name": "Бытовая химия",
+      "category_description": "непродовольственные химические вещества, средства ухода за одеждой, помещениями, автомобилями, посудой и тому подобным"
+    }
+  },
+  {
+    "model": "catalog.category",
+    "pk": 2,
+    "fields": {
+      "category_name": "Косметика",
+      "category_description": "косметические средства, которые используются для украшения лица,глаз, губ, ногтей и других частей тела"
+    }
+  },
+  {
+    "model": "catalog.category",
+    "pk": 3,
+    "fields": {
+      "category_name": "Для ухода",
+      "category_description": "средства по уходу за кожей лица и тела"
+    }
+  },
+  {
+    "model": "catalog.product",
+    "pk": 7,
+    "fields": {
+      "product_name": "Тональный крем",
+      "product_description": "декоративная косметика для выравнивания тона лица",
+      "image": "",
+      "category": 2,
+      "price": "329.00",
+      "created_at": "2024-09-10T09:41:11.024Z",
+      "updated_at": "2024-09-10T09:41:11.024Z"
+    }
+  },
+  {
+    "model": "catalog.product",
+    "pk": 8,
+    "fields": {
+      "product_name": "Помада для губ",
+      "product_description": "декоративная косметика для губ",
+      "image": "",
+      "category": 2,
+      "price": "659.00",
+      "created_at": "2024-09-10T09:43:07.752Z",
+      "updated_at": "2024-09-10T09:43:07.752Z"
+    }
+  },
+  {
+    "model": "catalog.product",
+    "pk": 9,
+    "fields": {
+      "product_name": "Крем для лица",
+      "product_description": "увлажняющий крем для лица",
+      "image": "",
+      "category": 3,
+      "price": "1059.00",
+      "created_at": "2024-09-10T09:44:39.317Z",
+      "updated_at": "2024-09-10T09:44:39.317Z"
+    }
+  },
+  {
+    "model": "catalog.product",
+    "pk": 10,
+    "fields": {
+      "product_name": "Гель для лица и тела",
+      "product_description": "очищающий гель для умывания",
+      "image": "",
+      "category": 3,
+      "price": "1659.00",
+      "created_at": "2024-09-10T09:46:02.989Z",
+      "updated_at": "2024-09-10T09:46:02.989Z"
+    }
+  },
+  {
+    "model": "catalog.product",
+    "pk": 11,
+    "fields": {
+      "product_name": "Стиральный порошок",
+      "product_description": "Стиральный порошок для цветного белья",
+      "image": "",
+      "category": 1,
+      "price": "656.00",
+      "created_at": "2024-09-10T09:47:38.138Z",
+      "updated_at": "2024-09-10T09:47:38.138Z"
+    }
+  },
+  {
+    "model": "catalog.product",
+    "pk": 12,
+    "fields": {
+      "product_name": "Бальзам для мытья посуды",
+      "product_description": "Бальзам для мытья посуды с экстрактом мяты",
+      "image": "",
+      "category": 1,
+      "price": "139.00",
+      "created_at": "2024-09-10T09:49:04.638Z",
+      "updated_at": "2024-09-10T09:49:04.638Z"
+    }
+  }
+]
