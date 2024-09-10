@@ -1,0 +1,26 @@
+[
+  {
+    "model": "catalog.category",
+    "pk": 1,
+    "fields": {
+      "category_name": "Бытовая химия",
+      "category_description": "непродовольственные химические вещества, средства ухода за одеждой, помещениями, автомобилями, посудой и тому подобным"
+    }
+  },
+  {
+    "model": "catalog.category",
+    "pk": 2,
+    "fields": {
+      "category_name": "Косметика",
+      "category_description": "косметические средства, которые используются для украшения лица,глаз, губ, ногтей и других частей тела"
+    }
+  },
+  {
+    "model": "catalog.category",
+    "pk": 3,
+    "fields": {
+      "category_name": "Для ухода",
+      "category_description": "средства по уходу за кожей лица и тела"
+    }
+  }
+]
