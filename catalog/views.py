@@ -1,6 +1,7 @@
 from itertools import product
 
 from django.shortcuts import render, get_object_or_404
+from django.views.generic import ListView, DetailView, TemplateView
 
 from catalog.models import Product
 
@@ -9,15 +10,14 @@ def home(request):
     return render(request, "home.html")
 
 
-def contact(request):
-    return render(request, "contact.html")
+# def contact(request):
+#     return render(request, "contact.html")
 
-def product_list(request):
-    products= Product.objects.all()
-    context = {'products': products}
-    return render(request, 'product_list.html',context)
+class ProductListView(ListView):
+    model = Product
 
-def products_detail(request,pk):
-    product = get_object_or_404(Product, pk=pk)
-    context = {'product': product}
-    return render(request, 'products_detail.html', context)
+class ProductDetailView(DetailView):
+    model = Product
+
+class ContactView(TemplateView):
+    template_name = "catalog/contact.html"
