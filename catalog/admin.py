@@ -1,5 +1,5 @@
 from django.contrib import admin
-from catalog.models import Product, Category
+from catalog.models import Product, Category, Version
 
 
 @admin.register(Product)
@@ -12,3 +12,11 @@ class ProductAdmin(admin.ModelAdmin):
 class CategoryAdmin(admin.ModelAdmin):
     list_display = ("id", "category_name")
 
+@admin.register(Version)
+class VersionAdmin(admin.ModelAdmin):
+    list_display = ('product', 'version_number', 'version_flag')
+    list_filter = ('version_flag',)
+
+   #
+   # admin.site.register(Product)
+   # admin.site.register(Version, VersionAdmin)

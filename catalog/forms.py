@@ -1,15 +1,15 @@
-from django.forms import ModelForm, forms
+from django import forms
 
 from catalog.models import Product
 
 
-class ProductForm(ModelForm):
+class ProductForm(forms.ModelForm):
 
     class Meta:
         model = Product
         fields = '__all__'
 
-    def clean_first_name(self):
+    def clean_product_name(self):
         cleaned_data = self.cleaned_data['product_name']
 
         forbidden_words = ['казино', 'криптовалюта', 'крипта', 'биржа', 'дешево', 'бесплатно', 'обман', 'полиция',

@@ -50,6 +50,8 @@ class Product(models.Model):
     created_at = models.DateTimeField(auto_now_add=True, verbose_name="Дата создания")
     updated_at = models.DateTimeField(auto_now=True, verbose_name="Дата изменения")
 
+    def get_active_version(self):
+        return self.versions.filter(version_flag=True).first()
 
     def __str__(self):
         return self.product_name
@@ -58,3 +60,27 @@ class Product(models.Model):
         verbose_name = "Продукт"
         verbose_name_plural = "Продукты"
         ordering = ["product_name", "product_description", "price"]
+
+class Version(models.Model):
+    product = models.ForeignKey(
+        Product,
+        on_delete=models.SET_NULL,
+        verbose_name="Продукт",
+        blank=True,
+        null=True,
+        related_name="versions",)
+    version_number = models.IntegerField(verbose_name='номер версии')
+    name = models.CharField(max_length=150, verbose_name='название версии')
+    version_flag = models.BooleanField(default=False, verbose_name='признак версии')
+
+    class Meta:
+        verbose_name = "Версия"
+        verbose_name_plural = "Версии"
+        ordering = ["product", "version_number", "name", "version_flag"]
+        constraints = [
+            models.UniqueConstraint(fields=['product', 'version_flag'], condition=models.Q(version_flag=True),
+                                    name='unique_active_version')
+        ]
+
+    def __str__(self):
+        return f'{self.name} - {self.version_number}'
