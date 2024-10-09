@@ -15,7 +15,7 @@
                         <p class="card-text">{{ product.product_name}}</p>
                         {% with active_version=product.get_active_version %}
                         {% if active_version %}
-                        Название версии: {{ active_version.name }}
+                        Версия: {{ active_version.name }}
                         {% else %}
                         Нет доступной активной версии.
                         {% endif %}
