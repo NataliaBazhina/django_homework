@@ -1,4 +1,7 @@
 from django.db import models
+from django.db.models import SET_NULL
+
+from users.models import User
 
 
 class Category(models.Model):
@@ -49,6 +52,7 @@ class Product(models.Model):
     )
     created_at = models.DateTimeField(auto_now_add=True, verbose_name="Дата создания")
     updated_at = models.DateTimeField(auto_now=True, verbose_name="Дата изменения")
+    owner = models.ForeignKey(User, verbose_name='владелец', help_text='укажите владельца', on_delete=SET_NULL, blank=True, null=True)
 
     def get_active_version(self):
         return self.versions.filter(version_flag=True).first()

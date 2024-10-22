@@ -19,6 +19,7 @@ class ProductForm(StyleFormMixin, forms.ModelForm):
         model = Product
         fields = '__all__'
 
+
     def clean_product_name(self):
         cleaned_data = self.cleaned_data['product_name']
 

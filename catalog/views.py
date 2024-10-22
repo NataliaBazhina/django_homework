@@ -1,5 +1,6 @@
 from itertools import product
 
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.forms import inlineformset_factory
 from django.shortcuts import render, get_object_or_404
 from django.urls import reverse_lazy
@@ -36,7 +37,7 @@ class ProductDetailView(DetailView):
 class ContactView(TemplateView):
     template_name = "catalog/contact.html"
 
-class ProductCreateView(CreateView):
+class ProductCreateView(CreateView, LoginRequiredMixin):
     model = Product
     form_class = ProductForm
     success_url = reverse_lazy("catalog:product_list")
@@ -58,8 +59,15 @@ class ProductCreateView(CreateView):
             if word in cleaned_data:
                 form.add_error('product_name', 'Данное название не подходит.')
                 return self.form_invalid(form)
-
+        form.owner = self.request.user
         return super().form_valid(form)
+
+    # product = form.save()
+    # user = self.request.user
+    # product.owner = user
+    # product.save()
+    # return super().form_valid(form)
+
 
 
 class ProductUpdateView(UpdateView):
