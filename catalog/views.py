@@ -5,7 +5,7 @@ from django.forms import inlineformset_factory
 from django.shortcuts import render, get_object_or_404
 from django.urls import reverse_lazy
 from django.views.generic import ListView, DetailView, TemplateView, CreateView, UpdateView, DeleteView
-
+from django.contrib.auth.mixins import PermissionRequiredMixin
 from catalog.forms import VersionForm, ProductForm
 from catalog.models import Product, Version
 
@@ -19,6 +19,7 @@ def home(request):
 
 class ProductListView(ListView):
     model = Product
+    queryset = Product.objects.filter(is_active = True)
 
 
 class ProductDetailView(DetailView):
@@ -70,10 +71,11 @@ class ProductCreateView(CreateView, LoginRequiredMixin):
 
 
 
-class ProductUpdateView(UpdateView):
+class ProductUpdateView(UpdateView, PermissionRequiredMixin):
     model = Product
     form_class = ProductForm
     success_url = reverse_lazy("catalog:product_list")
+    permission_required = 'catalog.change_product'
 
     def get_context_data(self, **kwargs):
         context_data = super().get_context_data(**kwargs)
