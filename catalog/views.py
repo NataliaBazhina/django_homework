@@ -1,7 +1,9 @@
 from itertools import product
 
 from django.contrib.auth.mixins import LoginRequiredMixin
+from django.core.exceptions import PermissionDenied
 from django.forms import inlineformset_factory
+from django.http import HttpRequest, HttpResponse
 from django.shortcuts import render, get_object_or_404
 from django.urls import reverse_lazy
 from django.views.generic import ListView, DetailView, TemplateView, CreateView, UpdateView, DeleteView
@@ -96,6 +98,9 @@ class ProductUpdateView(UpdateView, PermissionRequiredMixin):
             return super().form_valid(form)
         else:
             return self.render_to_response(self.get_context_data(form=form, formset=formset))
+
+
+
 
 class ProductDeleteView(DeleteView):
     model = Product

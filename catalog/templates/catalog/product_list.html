@@ -26,8 +26,10 @@
                             <div class="btn-group">
                                 <a class="btn btn-primary" href="{% url 'catalog:products_detail' product.pk %}"
                                    role="button">Посмотреть</a>
-                                <a class="btn btn-primary" href="{% url 'catalog:update_product' product.pk %}"
-                                   role="button">Редактировать</a>
+                                {% if user.pk == product.owner.pk %}
+                                    <a class="btn btn-primary" href="{% url 'catalog:update_product' product.pk %}"
+                                    role="button">Редактировать</a>
+                                {% endif %}
                                 <a class="btn btn-primary" href="{% url 'catalog:delete_product' product.pk %}"
                                    role="button">Удалить</a>
                             </div>
