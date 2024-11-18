@@ -10,6 +10,7 @@ from django.views.generic import ListView, DetailView, TemplateView, CreateView,
 from django.contrib.auth.mixins import PermissionRequiredMixin
 from catalog.forms import VersionForm, ProductForm
 from catalog.models import Product, Version
+from catalog.services import get_products_from_cache
 
 
 def home(request):
@@ -23,6 +24,8 @@ class ProductListView(ListView):
     model = Product
     queryset = Product.objects.filter(is_active = True)
 
+    def get_queryset(self):
+        return get_products_from_cache()
 
 class ProductDetailView(DetailView):
     model = Product
